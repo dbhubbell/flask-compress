@@ -57,8 +57,8 @@ class Compress(object):
             ('COMPRESS_MIMETYPES', ['text/html', 'text/css', 'text/xml',
                                     'application/json',
                                     'application/javascript']),
-            ('COMPRESS_LEVEL', 6),
-            ('COMPRESS_MIN_SIZE', 500),
+            ('COMPRESS_LEVEL', 8),
+            ('COMPRESS_MIN_SIZE', 50),
             ('COMPRESS_CACHE_KEY', None),
             ('COMPRESS_CACHE_BACKEND', None),
             ('COMPRESS_REGISTER', True),
@@ -77,7 +77,7 @@ class Compress(object):
 
     def after_request(self, response):
         app = self.app or current_app
-        accept_encoding = request.headers.get('Accept-Encoding', 'gzip')
+        accept_encoding = request.headers.get('Accept-Encoding', '')
 
         if (response.mimetype not in app.config['COMPRESS_MIMETYPES'] or
             'gzip' not in accept_encoding.lower() or
