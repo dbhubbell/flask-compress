@@ -77,7 +77,7 @@ class Compress(object):
 
     def after_request(self, response):
         app = self.app or current_app
-        accept_encoding = request.headers.get('Accept-Encoding', '')
+        accept_encoding = request.headers.get('Accept-Encoding', 'gzip')
 
         if (response.mimetype not in app.config['COMPRESS_MIMETYPES'] or
             'gzip' not in accept_encoding.lower() or

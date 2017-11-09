@@ -46,10 +46,10 @@ class UrlTests(unittest.TestCase):
         self.app = Flask(__name__)
         self.app.testing = True
 
-        small_path = os.path.join(os.getcwd(), 'tests', 'templates',
+        small_path = os.path.join(os.getcwd(), 'templates',
                                   'small.html')
 
-        large_path = os.path.join(os.getcwd(), 'tests', 'templates',
+        large_path = os.path.join(os.getcwd(), 'templates',
                                   'large.html')
 
         self.small_size = os.path.getsize(small_path) - 1
